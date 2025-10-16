@@ -11,7 +11,7 @@ const App = () => {
   const [notes, setNotes] = useState([])
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
-  const [user, setUser] = useState(null)  
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     noteService.getAll().then(initialNotes => {
@@ -53,7 +53,7 @@ const App = () => {
   }
 
   const userSetter = (user) => {
-    setUser(user)   
+    setUser(user)
   }
 
   const errorMessageSetter = (message) => {
@@ -68,7 +68,6 @@ const App = () => {
     setUser(null)
   }
 
-  
   const notesToShow = showAll ? notes : notes.filter(note => note.important)
   const noteFormRef = useRef()
 
@@ -76,8 +75,8 @@ const App = () => {
     <div>
       <h1>Notes</h1>
       <Notification message={errorMessage} />
-    
-      {!user && 
+
+      {!user &&
         <Togglable buttonLabel='login'>
           <LoginForm
             userSetter={userSetter}
@@ -85,8 +84,7 @@ const App = () => {
           />
         </Togglable>
       }
-      
-      {user && 
+      {user &&
         <div>
           <div className='logOut'>
             <p>Logged in as {user.username}</p>
@@ -113,7 +111,6 @@ const App = () => {
           />
         ))}
       </ul>
-      
       <Footer />
     </div>
   )
